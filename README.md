@@ -37,11 +37,11 @@ Caused by: java.lang.ClassNotFoundException: scala.collection.compat.Factory$
 The following combinations of dependency versions was tested to work okay:
 
 ## Option A
-play-json-joda 2.6.13
-Play 2.7
-play2-reactivemongo 0.16.2-play27
+play-json-joda 2.6.13  
+Play 2.7  
+play2-reactivemongo 0.16.2-play27  
 
 ## Option B
-play-json-joda 2.7.1
-Play 2.6.21
-play2-reactivemongo 0.16.2-play26
+play-json-joda 2.7.1  
+Play 2.6.21  
+play2-reactivemongo 0.16.2-play26  
