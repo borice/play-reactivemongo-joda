@@ -6,6 +6,8 @@ When using `play-json-joda` version `2.7.1` with Play 2.7 and `play2-reactivemon
 there is a problem with being able to write JODA `DateTime` structures to the database. The problem seems to 
 exist in the serialization mechanism with ReactiveMogo (although I could be wrong about this).
 
+_What's interesting is that the problem is only exhibited on `write` operations, not on `read`._
+
 The exception trace is as follows:
 ```
 [error] a.a.ActorSystemImpl - Uncaught error from thread [application-akka.actor.default-dispatcher-3]: scala/collection/compat/Factory$, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[application]
@@ -45,3 +47,24 @@ play2-reactivemongo 0.16.2-play27
 play-json-joda 2.7.1  
 Play 2.6.21  
 play2-reactivemongo 0.16.2-play26  
+
+# The Test
+This sample project exposes 2 API endpoints:  
+- `/save` - which saves a DateTime object to a MongoDB "test" collection in a `test` database
+- `/load` - which loads the saved DateTime object and displays it
+
+## Example 
+
+To save the JODA DateTime object to DB: 
+```
+curl localhost:9000/save
+```
+should just return 200 OK
+
+To load it back:
+```
+curl localhost:9000/load
+```
+which will return something like `2019-03-05T17:20:03.918-06:00` in plain text.
+
+
